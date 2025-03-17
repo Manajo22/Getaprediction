@@ -1,2 +1,0 @@
-# Getaprediction
-Get your prediction
