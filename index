@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gET a pREDICTION. </title>
+    <link rel="stylesheet" href="https://use.typekit.net/jnq0mph.css">
+    <style>
+        Body {
+            background-color: #d193d2;
+        }
+
+        input[type="text"],
+        textarea {
+
+            background-color: #2b3146;
+            font-family: 'nicholas', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 25px;
+            color: #d193d2;
+            border-radius: 5px;
+            border: 0.3rem solid #0f9282;
+            margin-top: 10px;
+            margin-left: 500px;
+        }
+
+        input[type="number"],
+        textarea {
+
+            background-color: #2b3146;
+            font-family: 'nicholas', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 25px;
+            color: #61df9f;
+            border-radius: 5px;
+            border: 0.3rem solid #f12b22;
+            margin-top: 10px;
+            margin-left: 500px;
+        }
+
+        button {
+            background-color: #f4eed8;
+            color: #0f9282;
+            border: 0.3rem solid #3e459e;
+            font-family: "nicholas", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 40px;
+            margin-top: 30px;
+            margin-left: 500px;
+            border-radius: 15px;
+            cursor: pointer #2b3146;
+
+        }
+
+        #output {
+            background-color: #f4eed8;
+            color: #f12b22;
+
+            font-family: "nicholas", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 40px;
+            position: fixed;
+            overflow: hidden;
+
+
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 30px;
+            margin-left: 500px;
+
+        }
+
+        h1 {
+            color: #3e459e;
+            font-family: 'nicholas', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 70px;
+            text-align: center;
+            border: 0.5rem solid #0f9282;
+            width: 700px;
+            height: 170px;
+            margin-top: 65px;
+            margin-left: 500px;
+            border-radius: 35px;
+            background-color: #f4eed8;
+        }
+
+        label {
+            color: #3e459e;
+            font-family: 'nicholas', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 30px;
+            margin-top: 50px;
+            margin-left: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>
+        Get a prediction for
+        <br>
+        3 hours from now!
+    </h1>
+
+    <img src="https://i.postimg.cc/022WDwWF/clock-rotate-2-1.gif" alt="clock" style="position: absolute; top: 280px; left: 875px; width: 25%;
+    height: auto;" />
+
+    <label>
+        What's your <span style="color:#f4eed8;">name?</span style>
+    </label>
+    <div>
+        <input type="text" id="input-1" maxlength="15" minlength="1">
+    </div>
+
+    <br>
+    <br>
+
+    <label>
+        What<span style="color:#f4eed8;"> hour</span style> of the day is it?
+    </label>
+    <div>
+        <input type="number" id="input-2" value="23" min="0" max="23">
+    </div>
+
+    <br>
+
+    <div><button onclick="checkPrediction();">Check your prediction!</button></div>
+    <br>
+    <div id="output"></div>
+
+    <script>
+
+        const output = document.querySelector('#output');
+        let myData1negative = [
+            "You MIGHT meet someone you hate.",
+            "You MIGHT get arrested for being on this website. NO lol.",
+            "You MIGHT feel the urge to punch someone.DO IT. DO IT.",
+        ];
+        let myData2love = [
+            "You MIGHT find love. IDK though.",
+            "You MIGHT get a really stupid crush on someone. I hope not.",
+            "You MIGHT feel extremely flirty. Flirt at your own risk.",
+        ];
+        let myData3food = [
+            "You MIGHT feel like getting ice-cream. DO NOT, haha.",
+            "You MIGHT feel like getting a coffee. ONE CUP ONLY.",
+            "You MIGHT feel like getting a salad. YES. Eat healthy. ",
+        ];
+        let myData4positive = [
+            "You MIGHT get a balloon for your cat. If you have one.",
+            "You MIGHT smile at a stranger on the street.",
+            "You MIGHT complete your TO-DO list. STAY FOCUSED. ",
+        ];
+        let myData5stupid = [
+            "You MIGHT - you might... wait. I cannot decode.",
+            "You MIGHT not? might? To might or not to might?",
+            "You MIGHT- boots and cats and boots and cats and boot.",
+        ];
+        let myData6lalala = [
+            "You MIGHT scratch a monkey.",
+            "You MIGHT dodge a bullet. Or a burrito.",
+            "You MIGHT lalala in your head for a long time.",
+        ];
+        let myData7travel = [
+            "You MIGHT go to Greece.",
+            "You MIGHT go take a bus somewhere.",
+            "You MIGHT go to that restaurant you like. ",
+        ];
+        let myData8sleep = [
+            "You MIGHT want to take a nap.",
+            "You MIGHT want to put down your phone and sleep finally.",
+            "You MIGHT want to dance a little to not feel as sleepy",
+        ];
+        let myData9finance = [
+            "You MIGHT want to check your bank balance. All the best, lol.",
+            "You MIGHT want to pay your friend back. It's been forever.",
+            "You MIGHT want to save money today. MY GOD. JUST SAVE.",
+        ];
+        function checkPrediction() {
+            let Datainput1 = document.querySelector('#input-1').value.length;
+            let Datainput2 = document.querySelector('#input-2').valueAsNumber;
+
+            if (Datainput1!= 0 && Datainput1 <= 5 && Datainput2 <= 8) {
+                const randomline1 = myData2love[Math.floor(Math.random() * myData2love.length)]
+                output.innerHTML = randomline1
+
+            }
+
+            else if ( Datainput1!= 0 &&Datainput1 <= 5 &&
+                Datainput2 <= 16 && Datainput2 > 8) {
+                const randomline2 = myData5stupid[Math.floor(Math.random() * myData5stupid.length)]
+                output.innerHTML = randomline2
+            }
+
+            else if (Datainput1!= 0 && Datainput1 <= 5 &&
+                Datainput2 <= 23 && Datainput2 > 16) {
+                const randomline3 = myData1negative[Math.floor(Math.random() * myData1negative.length)]
+                output.innerHTML = randomline3
+            }
+
+            else if (Datainput1 <= 10 && Datainput1 > 5 &&
+                Datainput2 <= 8) {
+                const randomline4 = myData9finance[Math.floor(Math.random() * myData9finance.length)]
+                output.innerHTML = randomline4
+            }
+
+            else if (Datainput1 <= 10 && Datainput1 > 5 &&
+                Datainput2 <= 16 && Datainput2 > 8) {
+                const randomline5 = myData4positive[Math.floor(Math.random() * myData4positive.length)]
+                output.innerHTML = randomline5
+            }
+
+            else if (Datainput1 <= 10 && Datainput1 > 5 &&
+                Datainput2 <= 23 && Datainput2 > 16) {
+                const randomline6 = myData8sleep[Math.floor(Math.random() * myData8sleep.length)]
+                output.innerHTML = randomline6
+            }
+
+            else if (Datainput1 <= 15 && Datainput1 > 10 &&
+                Datainput2 <= 8) {
+                const randomline7 = myData7travel[Math.floor(Math.random() * myData7travel.length)]
+                output.innerHTML = randomline7
+            }
+
+            else if (Datainput1 <= 15 && Datainput1 > 10 &&
+                Datainput2 <= 16 && Datainput2 > 8) {
+                const randomline8 = myData3food[Math.floor(Math.random() * myData3food.length)]
+                output.innerHTML = randomline8
+            }
+
+            else if (Datainput1 <= 15 && Datainput1 > 10 &&
+                Datainput2 <= 23 && Datainput2 > 16) {
+                const randomline9 = myData6lalala[Math.floor(Math.random() * myData6lalala.length)]
+                output.innerHTML = randomline9
+            }
+
+            else if (Datainput1 == 0 && Datainput2>=0 && Datainput2 <=23)
+           { alert("Your name needs to have 1 valid character.")}
+
+           else if (Datainput2> 23 && Datainput1 > 0)
+           { alert("Please enter a valid hour of the day (0-23).")}
+
+           else if (Datainput2> 23 && Datainput1 == 0)
+           { alert("Please enter a valid hour of the day(0-23) and please enter 1 valid character. ")
+           }
+
+
+
+
+
+        }
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
